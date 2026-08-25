@@ -11,9 +11,14 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
+[Oo]ut/
 [Ll]og/
 [Ll]ogs/
 [Aa]rtifacts/
+.artifacts/
+*.binlog
+MSBuild_Logs/
+Generated\ Files/
 
 ## Visual Studio
 .vs/
@@ -39,15 +44,26 @@ bld/
 *.vsp
 *.vspx
 *.sap
+*.e2e
+*.[Cc]ache
+!?*.[Cc]ache/
+**/.localhistory/
+.vshistory/
+MigrationBackup/
 
-## Rider / VS Code / other IDEs
+## Rider / ReSharper / VS Code / Cursor
 .idea/
 *.sln.iml
+*.DotSettings.user
+_ReSharper*/
+*.[Rr]e[Ss]harper
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
 
 ## NuGet
 *.nupkg
@@ -56,31 +72,52 @@ bld/
 !**/[Pp]ackages/build/
 project.lock.json
 project.fragment.lock.json
-artifacts/
+*.nuget.props
+*.nuget.targets
 
-## ASP.NET / secrets
+## ASP.NET / secrets / publish
+.env
+.env.*
+!.env.example
 appsettings.*.local.json
 **/secrets.json
 *.pfx
 *.publishsettings
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
 *.pubxml.user
+*.publishproj
 PublishScripts/
 publish/
+
+## Local databases (SQL Server / SQLite)
+*.mdf
+*.ldf
+*.ndf
+*.db
+*.db-shm
+*.db-wal
+*.dbmdl
+*.jfm
+healthchecksdb
 
 ## Tests and coverage
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
+TestResult.xml
 *.trx
 *.coverage
 *.coveragexml
 coverage*
+*.received.*
 
-## OS
+## OS / editors
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 .DS_Store
-
-## Misc
+*~
+*.tmp
 *.log
 node_modules/
