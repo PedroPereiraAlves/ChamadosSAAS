@@ -1,0 +1,90 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Entrar";
+}
+
+<div class="auth-shell">
+    <section class="auth-showcase" aria-hidden="true">
+        <div class="showcase-glow"></div>
+        <header class="showcase-brand">
+            <span class="logo-mark"></span>
+            Chamados
+        </header>
+
+        <div class="showcase-copy">
+            <p class="eyebrow">Helpdesk para times enxutos</p>
+            <h1>Onde cada chamado encontra um dono.</h1>
+            <p class="lede">Abra, priorize e acompanhe solicitações em um único lugar — sem planilha, sem fio partido.</p>
+        </div>
+
+        <div class="ticket-stack">
+            <article class="ticket-card ticket-card--back">
+                <span class="ticket-id">#1041</span>
+                <strong>Acesso ao VPN instável</strong>
+                <span class="ticket-meta">Rede · Alta</span>
+            </article>
+            <article class="ticket-card ticket-card--mid">
+                <span class="ticket-id">#1042</span>
+                <strong>Nota fiscal não emitida</strong>
+                <span class="ticket-meta">Financeiro · Média</span>
+            </article>
+            <article class="ticket-card ticket-card--front">
+                <div class="ticket-top">
+                    <span class="ticket-id">#1043</span>
+                    <span class="status-pill">Em andamento</span>
+                </div>
+                <strong>Impressora do 2º andar parou</strong>
+                <p>A fila da recepção está parada desde as 14h.</p>
+                <span class="ticket-meta">Infra · Atribuído a Ana</span>
+            </article>
+        </div>
+    </section>
+
+    <section class="auth-panel">
+        <div class="auth-card">
+            <header class="auth-heading">
+                <p class="mobile-brand">
+                    <span class="logo-mark"></span>
+                    Chamados
+                </p>
+                <h2>Entrar na conta</h2>
+                <p>Use o e-mail da sua equipe para continuar.</p>
+            </header>
+
+            <form asp-controller="Account" asp-action="Login" method="post" class="login-form" novalidate>
+                <div asp-validation-summary="ModelOnly" class="form-summary"></div>
+
+                <div class="field">
+                    <label asp-for="Email">E-mail</label>
+                    <input asp-for="Email" autocomplete="username" placeholder="voce@empresa.com" />
+                    <span asp-validation-for="Email" class="field-error"></span>
+                </div>
+
+                <div class="field">
+                    <label asp-for="Senha">Senha</label>
+                    <div class="password-wrap">
+                        <input asp-for="Senha" autocomplete="current-password" placeholder="••••••••" />
+                        <button type="button" class="password-toggle" data-password-toggle aria-label="Mostrar senha">Mostrar</button>
+                    </div>
+                    <span asp-validation-for="Senha" class="field-error"></span>
+                </div>
+
+                <div class="form-row">
+                    <label class="remember">
+                        <input asp-for="LembrarMe" />
+                        Lembrar de mim
+                    </label>
+                    <button type="button" class="ghost-link">Esqueci a senha</button>
+                </div>
+
+                <button type="submit" class="btn-enter">Entrar</button>
+            </form>
+
+            <p class="auth-footnote">Protótipo de interface · autenticação ainda não conectada</p>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

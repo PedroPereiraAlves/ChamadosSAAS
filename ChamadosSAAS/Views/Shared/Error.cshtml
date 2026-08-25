@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Erro";
+}
+
+<main class="error-page">
+    <p class="brand-mark">Chamados</p>
+    <h1>Algo saiu do rumo.</h1>
+    <p>Não foi possível concluir esta requisição. Tente novamente em instantes.</p>
+    @if (ViewData["RequestId"] is string requestId && !string.IsNullOrEmpty(requestId))
+    {
+        <p class="request-id">ID da requisição: <code>@requestId</code></p>
+    }
+    <a asp-controller="Account" asp-action="Login">Voltar ao login</a>
+</main>
