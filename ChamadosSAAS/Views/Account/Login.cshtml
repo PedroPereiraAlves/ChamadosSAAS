@@ -4,20 +4,20 @@
 }
 
 <div class="auth-shell">
-    <section class="auth-showcase" aria-hidden="true">
-        <div class="showcase-glow"></div>
+    <section class="auth-showcase" aria-labelledby="showcase-title">
+        <div class="showcase-glow" aria-hidden="true"></div>
         <header class="showcase-brand">
-            <span class="logo-mark"></span>
+            <span class="logo-mark" aria-hidden="true"></span>
             Chamados
         </header>
 
         <div class="showcase-copy">
             <p class="eyebrow">Helpdesk para times enxutos</p>
-            <h1>Onde cada chamado encontra um dono.</h1>
+            <p class="showcase-title" id="showcase-title">Onde cada chamado encontra um dono.</p>
             <p class="lede">Abra, priorize e acompanhe solicitações em um único lugar — sem planilha, sem fio partido.</p>
         </div>
 
-        <div class="ticket-stack">
+        <div class="ticket-stack" aria-hidden="true">
             <article class="ticket-card ticket-card--back">
                 <span class="ticket-id">#1041</span>
                 <strong>Acesso ao VPN instável</strong>
@@ -40,14 +40,14 @@
         </div>
     </section>
 
-    <section class="auth-panel">
+    <main class="auth-panel" id="conteudo" tabindex="-1">
         <div class="auth-card">
             <header class="auth-heading">
                 <p class="mobile-brand">
-                    <span class="logo-mark"></span>
+                    <span class="logo-mark" aria-hidden="true"></span>
                     Chamados
                 </p>
-                <h2>Entrar na conta</h2>
+                <h1>Entrar na conta</h1>
                 <p>Use o e-mail da sua equipe para continuar.</p>
             </header>
 
@@ -55,38 +55,53 @@
                 <div asp-validation-summary="ModelOnly" class="form-summary" role="alert"></div>
                 @if (!string.IsNullOrEmpty(Model.StatusMessage))
                 {
-                    <p class="form-status" role="status">@Model.StatusMessage</p>
+                    <p class="form-status" role="status" tabindex="-1">@Model.StatusMessage</p>
                 }
 
                 <div class="field">
-                    <label asp-for="Email">E-mail</label>
-                    <input asp-for="Email" autocomplete="username" placeholder="voce@empresa.com" />
-                    <span asp-validation-for="Email" class="field-error"></span>
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email"
+                           autocomplete="username"
+                           autocapitalize="none"
+                           spellcheck="false"
+                           placeholder="voce@empresa.com"
+                           aria-required="true"
+                           aria-describedby="Email-error" />
+                    <span asp-validation-for="Email" class="field-error" id="Email-error"></span>
                 </div>
 
                 <div class="field">
-                    <label asp-for="Senha">Senha</label>
+                    <label asp-for="Senha"></label>
                     <div class="password-wrap">
-                        <input asp-for="Senha" autocomplete="current-password" placeholder="••••••••" />
-                        <button type="button" class="password-toggle" data-password-toggle aria-label="Mostrar senha">Mostrar</button>
+                        <input asp-for="Senha"
+                               autocomplete="current-password"
+                               autocapitalize="off"
+                               spellcheck="false"
+                               aria-required="true"
+                               aria-describedby="Senha-error" />
+                        <button type="button"
+                                class="password-toggle"
+                                data-password-toggle
+                                aria-controls="Senha"
+                                aria-pressed="false"
+                                aria-label="Mostrar senha">Mostrar</button>
                     </div>
-                    <span asp-validation-for="Senha" class="field-error"></span>
+                    <span asp-validation-for="Senha" class="field-error" id="Senha-error"></span>
                 </div>
 
                 <div class="form-row">
-                    <label class="remember">
+                    <label class="remember" asp-for="LembrarMe">
                         <input asp-for="LembrarMe" />
-                        Lembrar de mim
+                        <span>@Html.DisplayNameFor(m => m.LembrarMe)</span>
                     </label>
-                    <button type="button" class="ghost-link">Esqueci a senha</button>
                 </div>
 
                 <button type="submit" class="btn-enter">Entrar</button>
             </form>
 
-            <p class="auth-footnote">Protótipo de interface · autenticação ainda não conectada</p>
+            <p class="auth-footnote">Protótipo de interface. A autenticação ainda não está conectada.</p>
         </div>
-    </section>
+    </main>
 </div>
 
 @section Scripts {
