@@ -1,3 +1,4 @@
+@model ErrorViewModel
 @{
     ViewData["Title"] = "Erro";
 }
@@ -6,9 +7,9 @@
     <p class="brand-mark">Chamados</p>
     <h1>Algo saiu do rumo.</h1>
     <p>Não foi possível concluir esta requisição. Tente novamente em instantes.</p>
-    @if (ViewData["RequestId"] is string requestId && !string.IsNullOrEmpty(requestId))
+    @if (Model.ShowRequestId)
     {
-        <p class="request-id">ID da requisição: <code>@requestId</code></p>
+        <p class="request-id">ID da requisição: <code translate="no">@Model.RequestId</code></p>
     }
     <a asp-controller="Account" asp-action="Login">Voltar ao login</a>
 </main>

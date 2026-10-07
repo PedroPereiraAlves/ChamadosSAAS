@@ -52,7 +52,11 @@
             </header>
 
             <form asp-controller="Account" asp-action="Login" method="post" class="login-form" novalidate>
-                <div asp-validation-summary="ModelOnly" class="form-summary"></div>
+                <div asp-validation-summary="ModelOnly" class="form-summary" role="alert"></div>
+                @if (!string.IsNullOrEmpty(Model.StatusMessage))
+                {
+                    <p class="form-status" role="status">@Model.StatusMessage</p>
+                }
 
                 <div class="field">
                     <label asp-for="Email">E-mail</label>

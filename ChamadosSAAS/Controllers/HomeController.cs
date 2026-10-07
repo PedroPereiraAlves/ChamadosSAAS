@@ -1,14 +1,18 @@
-using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ChamadosSAAS.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ChamadosSAAS.Controllers;
 
 public class HomeController : Controller
 {
+    [HttpGet]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-        return View();
+        return View(new ErrorViewModel
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+        });
     }
 }
