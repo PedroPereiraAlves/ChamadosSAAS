@@ -66,6 +66,7 @@
                            spellcheck="false"
                            placeholder="voce@empresa.com"
                            aria-required="true"
+                           aria-invalid="@(ViewData.ModelState[nameof(Model.Email)]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "true" : null)"
                            aria-describedby="Email-error" />
                     <span asp-validation-for="Email" class="field-error" id="Email-error"></span>
                 </div>
@@ -78,6 +79,7 @@
                                autocapitalize="off"
                                spellcheck="false"
                                aria-required="true"
+                               aria-invalid="@(ViewData.ModelState[nameof(Model.Senha)]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "true" : null)"
                                aria-describedby="Senha-error" />
                         <button type="button"
                                 class="password-toggle"
@@ -91,7 +93,8 @@
 
                 <div class="form-row">
                     <label class="remember" asp-for="LembrarMe">
-                        <input asp-for="LembrarMe" />
+                        @* data-val="false": MVC treats non-nullable bools as required, which would force this box on. *@
+                        <input asp-for="LembrarMe" data-val="false" />
                         <span>@Html.DisplayNameFor(m => m.LembrarMe)</span>
                     </label>
                 </div>
